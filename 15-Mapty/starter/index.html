@@ -13,8 +13,21 @@
 
     <link rel="stylesheet" href="style.css" />
 
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+
     <script defer src="script.js"></script>
-    <title>mapty // Map your workouts</title>
+    <title>mapty app // Map your workouts</title>
   </head>
   <body>
     <div class="sidebar">
@@ -60,7 +73,7 @@
         <!-- <li class="workout workout--running" data-id="1234567890">
           <h2 class="workout__title">Running on April 14</h2>
           <div class="workout__details">
-            <span class="workout__icon">🏃‍♂️</span>
+            <span class="workout__icon">🏃‍♂/span>
             <span class="workout__value">5.2</span>
             <span class="workout__unit">km</span>
           </div>
@@ -70,12 +83,12 @@
             <span class="workout__unit">min</span>
           </div>
           <div class="workout__details">
-            <span class="workout__icon">⚡️</span>
+            <span class="workout__icon">⚡</span>
             <span class="workout__value">4.6</span>
             <span class="workout__unit">min/km</span>
           </div>
           <div class="workout__details">
-            <span class="workout__icon">🦶🏼</span>
+            <span class="workout__icon">🦶🏼span>
             <span class="workout__value">178</span>
             <span class="workout__unit">spm</span>
           </div>
@@ -84,7 +97,7 @@
         <li class="workout workout--cycling" data-id="1234567891">
           <h2 class="workout__title">Cycling on April 5</h2>
           <div class="workout__details">
-            <span class="workout__icon">🚴‍♀️</span>
+            <span class="workout__icon">🚴‍♀/span>
             <span class="workout__value">27</span>
             <span class="workout__unit">km</span>
           </div>
@@ -94,7 +107,7 @@
             <span class="workout__unit">min</span>
           </div>
           <div class="workout__details">
-            <span class="workout__icon">⚡️</span>
+            <span class="workout__icon">⚡</span>
             <span class="workout__value">16</span>
             <span class="workout__unit">km/h</span>
           </div>

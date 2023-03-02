@@ -37,6 +37,4 @@ const getCountryData = function (country) {
 };
 
 getCountryData('canada');
-getCountryData('germany');
-getCountryData('usa');
-getCountryData('india');
+getCountryData('bangladesh');

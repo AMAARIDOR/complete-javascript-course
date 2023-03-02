@@ -6,7 +6,6 @@ const countriesContainer = document.querySelector('.countries');
 ///////////////////////////////////////
 
 const renderCountry = function (data) {
-  console.log(typeof data);
   const html = `
         <article class="country">
           <img class="country__img" src="${data.flags.png}" />
@@ -37,7 +36,6 @@ const getCountryAndNeighbor = function (country) {
 
   request.addEventListener('load', function () {
     const [data] = JSON.parse(this.responseText);
-    console.log(data);
 
     // Render Country 1
     renderCountry(data);
@@ -53,13 +51,10 @@ const getCountryAndNeighbor = function (country) {
     request2.send();
 
     request2.addEventListener('load', function () {
-      const data2 = JSON.parse(this.responseText);
-      console.log(data2);
+      const [data2] = JSON.parse(this.responseText);
 
       renderCountry(data2);
     });
-
-    console.log(neighbor);
   });
 };
 

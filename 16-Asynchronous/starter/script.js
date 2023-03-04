@@ -206,8 +206,3 @@ const whereAmI = async function () {
   }
 };
 whereAmI();
-//   const x = 2;
-//   x = 3;
-// } catch (err) {
-//   alert(err.message);
-// }

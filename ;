@@ -86,26 +86,26 @@ const countriesContainer = document.querySelector('.countries');
 
 // getPosition().then(pos => console.log(pos));
 
-const renderCountry = function (country) {
-  const html = `
-      <article class="country">
-      <img class="country__img" src="${country.flags.png}" />
-      <div class="country__data">
-        <h3 class="country__name">${country.name.common}</h3>
-        <h4 class="country__region">${country.region}</h4>
-        <p class="country__row"><span>👫</span>${country.population.toLocaleString()} people</p>
-        <p class="country__row"><span>🗣️</span>${Object.values(
-          country.languages
-        )}</p>
-        <p class="country__row"><span>💰</span>${Object.keys(
-          country.currencies
-        )}</p>
-      </div>
-    </article>`;
+// const renderCountry = function (country) {
+//   const html = `
+//       <article class="country">
+//       <img class="country__img" src="${country.flags.png}" />
+//       <div class="country__data">
+//         <h3 class="country__name">${country.name.common}</h3>
+//         <h4 class="country__region">${country.region}</h4>
+//         <p class="country__row"><span>👫</span>${country.population.toLocaleString()} people</p>
+//         <p class="country__row"><span>🗣️</span>${Object.values(
+//           country.languages
+//         )}</p>
+//         <p class="country__row"><span>💰</span>${Object.keys(
+//           country.currencies
+//         )}</p>
+//       </div>
+//     </article>`;
 
-  countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
-};
+//   countriesContainer.insertAdjacentHTML('beforeend', html);
+//   countriesContainer.style.opacity = 1;
+// };
 
 // const whereAmI = function () {
 //   getPosition()
@@ -175,22 +175,9 @@ const renderCountry = function (country) {
 //   })
 //   .catch(err => console.log(err));
 
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-};
-
 const whereAmI = async function (country) {
-  const pos = await getPosition()
-  const {
-    latitude: lat, longitude: lng
-  } = pos.coords;
-  const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
-  const dataGeo = await resGeo.json();
-  const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`);
-  const data = await res.json();
-  renderCountry(data);
+  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+  console.log(res);
 };
-
-whereAmI(getPosition())
+whereAmI('India');
+console.log("first)

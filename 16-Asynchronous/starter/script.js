@@ -181,16 +181,33 @@ const getPosition = function () {
   });
 };
 
-const whereAmI = async function (country) {
-  const pos = await getPosition()
-  const {
-    latitude: lat, longitude: lng
-  } = pos.coords;
-  const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
-  const dataGeo = await resGeo.json();
-  const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`);
-  const data = await res.json();
-  renderCountry(data);
-};
+const whereAmI = async function () {
+  try {
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
 
-whereAmI(getPosition())
+    const resGeo = await fetch(
+      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=576707058067058397448x68696`
+    );
+    if (!resGeo.ok) throw new Error('Problem getting location data');
+
+    const dataGeo = await resGeo.json();
+
+    const res = await fetch(
+      `https://restcountries.com/v3.1/name/${dataGeo.country}`
+    );
+
+    if (!resGeo.ok) throw new Error('Problem getting country');
+
+    const data = await res.json();
+    renderCountry(data[0]);
+  } catch (err) {
+    console.error(`Something went wrong ${err.message}`);
+  }
+};
+whereAmI();
+//   const x = 2;
+//   x = 3;
+// } catch (err) {
+//   alert(err.message);
+// }

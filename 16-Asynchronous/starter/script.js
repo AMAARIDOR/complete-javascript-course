@@ -1,5 +1,4 @@
 'use strict';
-
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
@@ -16,8 +15,7 @@ const countriesContainer = document.querySelector('.countries');
 //         <h4 class="country__region">${country.region}</h4>
 //         <p class="country__row"><span>👫</span>${country.population.toLocaleString()} people</p>
 //         <p class="country__row"><span>🗣️</span>${Object.values(
-//           country.languages
-//         )}</p>
+//           country.languages)}</p>
 //         <p class="country__row"><span>💰</span>${Object.keys(
 //           country.currencies
 //         )}</p>
@@ -87,7 +85,7 @@ const countriesContainer = document.querySelector('.countries');
 // getPosition().then(pos => console.log(pos));
 
 const renderCountry = function (country) {
-  const html = `
+	const html = `
       <article class="country">
       <img class="country__img" src="${country.flags.png}" />
       <div class="country__data">
@@ -95,16 +93,16 @@ const renderCountry = function (country) {
         <h4 class="country__region">${country.region}</h4>
         <p class="country__row"><span>👫</span>${country.population.toLocaleString()} people</p>
         <p class="country__row"><span>🗣️</span>${Object.values(
-          country.languages
-        )}</p>
+			country.languages
+		)}</p>
         <p class="country__row"><span>💰</span>${Object.keys(
-          country.currencies
-        )}</p>
+			country.currencies
+		)}</p>
       </div>
     </article>`;
 
-  countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+	countriesContainer.insertAdjacentHTML('beforeend', html);
+	countriesContainer.style.opacity = 1;
 };
 
 // const whereAmI = function () {
@@ -176,34 +174,34 @@ const renderCountry = function (country) {
 //   .catch(err => console.log(err));
 
 const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
+	return new Promise(function (resolve, reject) {
+		navigator.geolocation.getCurrentPosition(resolve, reject);
+	});
 };
 
 const whereAmI = async function () {
-  try {
-    const pos = await getPosition();
-    const { latitude: lat, longitude: lng } = pos.coords;
+	try {
+		const pos = await getPosition();
+		const { latitude: lat, longitude: lng } = pos.coords;
 
-    const resGeo = await fetch(
-      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=576707058067058397448x68696`
-    );
-    if (!resGeo.ok) throw new Error('Problem getting location data');
+		const resGeo = await fetch(
+			`https://geocode.xyz/${lat},${lng}?geoit=json&auth=576707058067058397448x68696`
+		);
+		if (!resGeo.ok) throw new Error('Problem getting location data');
 
-    const dataGeo = await resGeo.json();
+		const dataGeo = await resGeo.json();
 
-    const res = await fetch(
-      `https://restcountries.com/v3.1/name/${dataGeo.country}`
-    );
+		const res = await fetch(
+			`https://restcountries.com/v3.1/name/${dataGeo.country}`
+		);
 
-    if (!resGeo.ok) throw new Error('Problem getting country');
+		if (!resGeo.ok) throw new Error('Problem getting country');
 
-    const data = await res.json();
-    renderCountry(data[0]);
-  } catch (err) {
-    console.error(`Something went wrong ${err.message}`);
-  }
+		const data = await res.json();
+		renderCountry(data[0]);
+	} catch (err) {
+		console.error(`Something went wrong ${err.message}`);
+	}
 };
-whereAmI();
 
+whereAmI();

@@ -1,16 +1,26 @@
-// Importing Module
-//import { addToCart, totalPrice as price, tq } from './shoppingCart.js';
-//
-//addToCart('bread', 5);
-//console.log(price, tq);
+const ShoppingCart = (function () {
+    const cart = [];
+    const shippingCost = 10;
+    const totalPrice = 235;
+    const totalQuantity = 23;
 
-console.log('Importing Module');
+    const addToCart = function (product, quantity) {
+        cart.push({ product, quantity });
+        console.log(`${quantity} ${product} added to cart`);
+    };
 
-//import * as ShoppingCart from './shoppingCart.js';
-//ShoppingCart.addToCart('bread', 5);
-//console.log(ShoppingCart.totalPrice);
+    const orderStock = function (product, quantity) {
+        cart.push({ product, quantity });
+        console.log(`${quantity} ${product} ordered from supplier`);
+    };
 
-// import add {addToCart, totalPrice as price, tq} from './shoppingCart.js';
+    return {
+        addToCart,
+        cart,
+        totalPrice,
+        totalQuantity,
+    };
+})();
 
-import add from './shoppingCart.js';
-add('pizza', 2);
+ShoppingCart.addToCart('apple', 4);
+ShoppingCart.addToCart('pizza', 5);

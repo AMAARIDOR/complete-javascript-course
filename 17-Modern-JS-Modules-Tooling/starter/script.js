@@ -1,31 +1,25 @@
-// Importing Module
-// import {
-//   addToCart,
-//   totalPrice as price,
-//   totalQuantity as tq,
-// } from './shoppingCart.js';
+const ShoppingCart2 = (function () {
+  const cart = [];
+  const shippingCost = 10;
+  const totalPrice = 237;
+  const totalQuantity = 23;
 
-console.log('Importing Module');
-// addToCart('bread', 5);
-// console.log(price, tq);
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} added to cart`);
+  };
 
-// import * as ShoppingCart from './shoppingCart.js';
-// ShoppingCart.addToCart('bread', 67);
-// console.log(ShoppingCart.totalPrice);
+  const orderStock = function (product, quantity) {
+    console.log(`${quantity} ${product} ordered from supplier`);
+  };
 
-import add from './shoppingCart.js';
-add('pizza', 2);
+  return {
+    addToCart,
+    cart,
+    totalPrice,
+    totalQuantity,
+  };
+})();
 
-// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-// const data = await res.json();
-// console.log(data);
-
-const getLastPost = async function () {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const data = await res.json();
-
-  return { title: data.at(-1).title, text: data.at(-1).body };
-};
-
-const lastPost2 = await getLastPost();
-console.log(lastPost2);
+ShoppingCart2.addToCart('Apple', 5);
+ShoppingCart2.addToCart('Banana', 2);

@@ -1,25 +1,15 @@
-// const ShoppingCart2 = (function () {
-//   const cart = [];
-//   const shippingCost = 10;
-//   const totalPrice = 237;
-//   const totalQuantity = 23;
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
-//   const addToCart = function (product, quantity) {
-//     cart.push({ product, quantity });
-//     console.log(`${quantity} ${product} added to cart`);
-//   };
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: 'pizza', quantity: 5 },
+  ],
+  use: { loggedIn: true },
+};
 
-//   const orderStock = function (product, quantity) {
-//     console.log(`${quantity} ${product} ordered from supplier`);
-//   };
+const stateClone = Object.assign({}, state);
+console.log(stateClone);
 
-//   return {
-//     addToCart,
-//     cart,
-//     totalPrice,
-//     totalQuantity,
-//   };
-// })();
-
-// ShoppingCart2.addToCart('Apple', 5);
-// ShoppingCart2.addToCart('Banana', 2);
+const stateDeepClone = cloneDeep(state);
+console.log(stateDeepClone);
